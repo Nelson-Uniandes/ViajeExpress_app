@@ -1,0 +1,36 @@
+version: '3.8'
+
+networks:
+  app_net:
+  users_net:
+
+services:
+  users:
+    build: ./users
+    container_name: users_service
+    ports:
+      - "5000:5000"
+    depends_on:
+      - users_db
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+    networks:
+      - app_net
+      - users_net
+
+  users_db:
+    build: ./database/users_db
+    container_name: users_db
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "5432:5432"
+    networks:
+      - users_net
