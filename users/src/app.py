@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import os
 from flask import Flask
 from db import db
@@ -18,5 +19,7 @@ with app.app_context():
     db.create_all()
 
 if __name__ == '__main__':
-    port = int(os.getenv("CONFIG_PORT", 5000)) 
+    load_dotenv(override=True)
+    port = int(os.getenv("CONFIG_PORT", 3000)) 
+    print(f"Using port: {port}")  # Depuración
     app.run(host="0.0.0.0", port=port)

@@ -1,0 +1,3 @@
+user-management:
+  folder: "users"
+  port: 3000
