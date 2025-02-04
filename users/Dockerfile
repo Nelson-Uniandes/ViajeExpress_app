@@ -17,7 +17,7 @@ ENV FLASK_ENV=testing
 ENV PYTHONPATH=/app
 
 # Exponer el puerto que usa la aplicación
-EXPOSE 5000
+EXPOSE $CONFIG_PORT
 
 # Comando para ejecutar la aplicación
 CMD ["python", "app.py"]
