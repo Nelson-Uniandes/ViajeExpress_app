@@ -13,9 +13,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copia el contenido de `src/` a `/app/` en lugar de copiar la carpeta completa
 COPY src/ /app/
 
+ENV FLASK_ENV=testing
+ENV PYTHONPATH=/app
+
 # Exponer el puerto que usa la aplicación
 EXPOSE 5000
 
 # Comando para ejecutar la aplicación
 CMD ["python", "app.py"]
+
 

@@ -5,3 +5,4 @@ flask_cors
 bcrypt
 uuid
 python-dotenv
+pytest-flask
